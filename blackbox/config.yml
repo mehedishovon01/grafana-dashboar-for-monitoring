@@ -1,0 +1,16 @@
+modules:
+  http_2xx:
+    prober: http
+    timeout: 30s
+    http:
+      valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+      valid_status_codes: [200, 301, 302, 307, 308]
+      follow_redirects: true
+      preferred_ip_protocol: "ip4"
+      ip_protocol_fallback: false
+      headers:
+        User-Agent: "Monitoring/1.0"
+        Accept: "*/*"
+      tls_config:
+        insecure_skip_verify: false
+      fail_if_not_ssl: false

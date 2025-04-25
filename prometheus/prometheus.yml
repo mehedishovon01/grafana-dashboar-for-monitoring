@@ -1,0 +1,31 @@
+scrape_configs:
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+  - job_name: 'blackbox-http'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          - https://github.com
+        labels:
+          instance: '01 - Github Site'
+      - targets:
+          - https://linkedin.com
+        labels:
+          instance: '02 - LinkedIn Site'
+      - targets:
+          - https://facebook.com
+        labels:
+          instance: '03 - Facebook Site'
+
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: target
+      - source_labels: [instance]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115
