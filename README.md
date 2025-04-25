@@ -31,13 +31,13 @@ This repository contains a monitoring stack using Prometheus, Grafana, Node Expo
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd Monitoring
+   git clone https://github.com/mehedishovon01/grafana-dashboar-for-monitoring.git
+   cd grafana-dashboar-for-monitoring
    ```
 
 2. Start the monitoring stack:
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 3. Access the services:
@@ -100,11 +100,11 @@ This repository contains a monitoring stack using Prometheus, Grafana, Node Expo
 1. **No Data in Grafana**
    - Check if Prometheus targets are up
    - Verify network connectivity between services
-   - Check service logs: `docker-compose logs <service-name>`
+   - Check service logs: `docker compose logs <service-name>`
 
 2. **Service Not Responding**
-   - Check if the service is running: `docker-compose ps`
-   - View service logs: `docker-compose logs <service-name>`
+   - Check if the service is running: `docker compose ps`
+   - View service logs: `docker compose logs <service-name>`
    - Verify port mappings and network configuration
 
 ## Security Notes
@@ -191,23 +191,3 @@ This repository contains a monitoring stack using Prometheus, Grafana, Node Expo
    - Modify title, tags, and time settings
    - Configure variables and templating
    - Set refresh intervals
-
-### Troubleshooting Dashboards
-
-1. **No Data Displayed**
-   - Verify Prometheus data source is working
-   - Check metric names and queries
-   - Ensure time range is appropriate
-   - Verify scrape targets are up
-
-2. **Panel Errors**
-   - Check query syntax
-   - Verify metric names exist
-   - Ensure proper data source selection
-   - Check for rate() function issues
-
-3. **Performance Issues**
-   - Reduce query time range
-   - Optimize queries
-   - Adjust refresh intervals
-   - Consider using dashboard caching
